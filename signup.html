@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Tracker</title>
+    <script src="https://kit.fontawesome.com/7b0cf6131d.js" crossorigin="anonymous"></script>
+    <script src="signup.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header id="header"><i class="fas fa-golf-ball"></i> Golf Tracker</header>
+        <div class="navHeader">
+            <span id="navIcon" onclick="openNav()" class="fa fa-bars"></span>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="scores.html" id="scores">Scores</a>
+            <a href="insights.html" id="insights">Insights</a>
+            <a href="login.html">Profile</a>
+        </div>
+
+        <div class="signup">
+            <form id="signup">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+            
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="username" placeholder="Enter Username" name="username" required>
+            
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="password" placeholder="Enter Password" name="password" required>
+            
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        } 
+
+        var userLoggedIn = sessionStorage.getItem("userStatus");
+
+        if (userLoggedIn == 'true') {
+            document.getElementById("scores").style.display = "block";
+            document.getElementById("insights").style.display = "block";
+            location.href = 'profile.html';
+        } else {
+            document.getElementById("scores").style.display = "none";
+            document.getElementById("insights").style.display = "none";
+        }
+
+    </script>
+</body>
+</html>

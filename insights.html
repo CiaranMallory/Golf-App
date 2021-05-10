@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Tracker</title>
+    <script src="https://kit.fontawesome.com/7b0cf6131d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header id="header"><i class="fas fa-golf-ball"></i> Golf Tracker
+        </br><img src="images/Ciaran_Icon.jpg" id="profileIcon">
+        <button class="logout-button" onclick="logout()" id="logout-button">Logout</button></header>
+        <div class="navHeader">
+            <span id="navIcon" onclick="openNav()" class="fa fa-bars"></span>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="scores.html" id="scores">Scores</a>
+            <a href="insights.html" id="insights">Insights</a>
+            <a href="login.html">Profile</a>
+        </div>
+
+        <div class="insights">
+            <canvas id="myChart" width="600px" height="300px"></canvas>
+            <script>
+            // Get Monthly Averages for Graphing
+            var username = sessionStorage.getItem("username");
+            var db = `http://localhost:3000/getallscores/${username}`;
+            fetch(db)
+                .then(response => {
+                return response.json();
+                })
+                .then(result => {
+                var Jan = [];
+                var Feb = [];
+                var Mar = [];
+                var Apr = [];
+                var May = [];
+                var Jun = [];
+                var Jul = [];
+                var Aug = [];
+                var Sep = [];
+                var Oct = [];
+                var Nov = [];
+                var Dec = [];
+
+                if(result.score != 0) {
+                    for(var i=1; i < result.length; i++){
+                        var date = result[i].date.split('-');
+                        //console.log(date);
+                        if (date[1] == "01"){
+                            Jan.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "02"){
+                            Feb.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "03"){
+                            Mar.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "04"){
+                            Apr.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "05"){
+                            May.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "06"){
+                            Jun.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "07"){
+                            Jul.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "08"){
+                            Aug.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "09"){
+                            Sep.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "10"){
+                            Oct.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "11"){
+                            Nov.push(parseInt(result[i].score));
+                        }
+                        if (date[1] == "12"){
+                            Dec.push(parseInt(result[i].score));
+                        }
+                    }
+
+                    // Add all scores in month together
+                    var sumJan;
+                    var sumFeb;
+                    var sumMar;
+                    var sumApr;
+                    var sumMay;
+                    var sumJun;
+                    var sumJul;
+                    var sumAug;
+                    var sumSep;
+                    var sumOct;
+                    var sumNov;
+                    var sumDec;
+
+                    if (Jan.length != 0){
+                        var sumJan = Jan.reduce((total, amount) => total + amount);
+                    }
+                    if (Feb.length != 0){
+                        var sumFeb = Feb.reduce((total, amount) => total + amount);
+                    }
+                    if (Apr.length != 0){
+                        var sumApr = Apr.reduce((total, amount) => total + amount);
+                    }
+                    if (May.length != 0){
+                        var sumMay = May.reduce((total, amount) => total + amount);
+                    }
+                    if (Jun.length != 0){
+                        var sumJun = Jun.reduce((total, amount) => total + amount);
+                    }
+                    if (Jul.length != 0){
+                        var sumJul = Jul.reduce((total, amount) => total + amount);
+                    }
+                    if (Aug.length != 0){
+                        var sumAug = Aug.reduce((total, amount) => total + amount);
+                    }
+                    if (Sep.length != 0){
+                        var sumSep = Sep.reduce((total, amount) => total + amount);
+                    }
+                    if (Oct.length != 0){
+                        var sumOct = Oct.reduce((total, amount) => total + amount);
+                    }
+                    if (Nov.length != 0){
+                        var sumNov = Nov.reduce((total, amount) => total + amount);
+                    }
+                    if (Dec.length != 0){
+                        var sumDec = Dec.reduce((total, amount) => total + amount);
+                    }
+
+                    // Get average for each month
+                    const averageJan = sumJan / Jan.length;
+                    const averageFeb = sumFeb / Feb.length; 
+                    const averageApr = sumApr / Apr.length; 
+                    const averageMay = sumMay / May.length; 
+                    const averageJun = sumJun / Jun.length; 
+                    const averageJul = sumJul / Jul.length;
+                    const averageAug = sumAug / Aug.length;
+                    const averageSep = sumSep / Sep.length; 
+                    const averageOct = sumOct / Oct.length; 
+                    const averageNov = sumNov / Nov.length; 
+                    const averageDec = sumDec / Dec.length;
+
+                    // Create chart
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Janurary', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                            datasets: [{
+                                label: 'Scores in Relation to Par',
+                                data: [averageJan, averageFeb, averageApr, averageMay,
+                                        averageJun, averageJul, averageAug,
+                                        averageSep, averageOct, averageNov, averageDec],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: false,
+                            color: '#dddd',
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            size: 18
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+ 
+            </script>
+
+        </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        } 
+
+        var userLoggedIn = sessionStorage.getItem("userStatus");
+        
+        if (userLoggedIn == 'true') {
+            document.getElementById("scores").style.display = "block";
+            document.getElementById("insights").style.display = "block";
+            document.getElementById("profileIcon").style.display = "block";
+            document.getElementById("logout-button").style.display = "block";
+        } else {
+            document.getElementById("scores").style.display = "none";
+            document.getElementById("insights").style.display = "none";
+            document.getElementById("profileIcon").style.display = "none";
+            document.getElementById("logout-button").style.display = "none";
+        }
+
+        function logout() {
+            sessionStorage.setItem("userStatus", "false");
+            console.log(userLoggedIn);
+            location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

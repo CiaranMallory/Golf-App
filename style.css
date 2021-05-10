@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    border: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 800px;
+    height: 500px;
+    margin: 180px auto;
+    background-color: aquamarine;
+    background-image: url('/images/GolfCourse.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    background-image: linear-gradient(rgb(9, 78, 29), rgb(30, 129, 17));
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+#profileIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-top: -40px;
+  margin-left: 600px;
+}
+
+.logout-button {
+  background-color: #111111;
+  color: white;
+  padding: 14px 20px;
+  margin-left: 10px;
+  margin-top: -40px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  opacity: 0.9;
+}
+
+.logout-button:hover {
+  opacity:1;
+}
+
+.logout-button:focus {
+  outline: none;
+}
+
+.sidenav {
+    height: 68%;
+    width: 0;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+#navIcon {
+    font-size: 30px;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+/* Scores.html */
+.form {
+    height: 400px;
+    width: 300px;
+    margin: -420px 100px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: rgb(9, 78, 29);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  input[type=submit]:focus {
+    outline: none;
+  }
+
+  input[type=text]:focus {
+    outline: none;
+  }
+
+.scoretable {
+    height: 200px;
+    overflow: scroll;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #dddddd;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.scorehistory {
+  width: 300px;
+  height: 400px;
+  border-radius: 10%;
+  margin: -410px 350px;
+  background-color: #dddddd;
+  overflow: scroll;
+}
+
+.scorehistory h4 {
+  font-family: sans-serif;
+  font-size: 16px;
+  margin-left: 80px;
+}
+
+.scorehistory ul li {
+  list-style: none;
+  color: #dddddd;
+}
+
+.history-list-item {
+  width: 250px;
+  height: 30px;
+  background-color: rgb(9, 78, 29);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: -15px;
+}
+
+/* SignUp */
+.signup {
+  width: 400px;
+  height: 300px;
+  margin: -400px auto;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+
+/* Login */
+.login {
+  width: 400px;
+  height: 300px;
+  margin: -380px auto;
+}
+
+/* Profile */
+.details {
+  width: 200px;
+  height: 300px;
+  border-radius: 10%;
+  margin: -400px 120px;
+  background-color: rgb(59, 58, 58);
+  color: #dddddd;
+  font-family: sans-serif;
+}
+
+.details h4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.details h5 {
+  margin-left: 10px;
+}
+
+.details p {
+  margin-left: 10px;
+}
+
+#playerPhoto {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.photo {
+  margin-top: 80px;
+  margin-left: 500px;
+}
+
+.insights {
+  width: 650px;
+  height: 300px;
+  margin: -380px auto;
+  background-color: rgb(119, 118, 118);
+}

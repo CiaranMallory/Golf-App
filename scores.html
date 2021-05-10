@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Tracker</title>
+    <script src="https://kit.fontawesome.com/7b0cf6131d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header id="header"><i class="fas fa-golf-ball"></i> Golf Tracker
+        </br><img src="images/Ciaran_Icon.jpg" id="profileIcon">
+        <button class="logout-button" onclick="logout()" id="logout-button">Logout</button></header>
+        <div class="navHeader">
+            <span id="navIcon" onclick="openNav()" class="fa fa-bars"></span>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="scores.html" id="scores">Scores</a>
+            <a href="insights.html" id="insights">Insights</a>
+            <a href="login.html">Profile</a>
+        </div>
+
+        <div class="form">
+            <form id="scores">
+                <label for="coursename">Course name</label>
+                <input type="text" name="coursename" id="coursename" placeholder="Course name..">
+            
+                <label for="date">Date</label>
+                <input type="text" name="date" id="date" placeholder="dd/mm/yy..">
+
+                <div class="scoretable">
+                    <table>
+                        <tr>
+                        <th>Hole no.</th>
+                        <th>Score</th>
+                        </tr>
+                        <tr>
+                        <td>1</td>
+                        <td><input type="text" id="one"></td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td><input type="text" id="two"></td>
+                        </tr>
+                        <tr>
+                        <td>3</td>
+                        <td><input type="text" id="three"></td>
+                        </tr>
+                        <tr>
+                        <td>4</td>
+                        <td><input type="text" id="four"></td>
+                        </tr>
+                        <tr>
+                        <td>5</td>
+                        <td><input type="text" id="five"></td>
+                        </tr>
+                        <tr>
+                        <td>6</td>
+                        <td><input type="text" id="six"></td>
+                        </tr>
+                        <tr>
+                        <td>7</td>
+                        <td><input type="text" id="seven"></td>
+                        </tr>
+                        <tr>
+                        <td>8</td>
+                        <td><input type="text" id="eight"></td>
+                        </tr>
+                        <tr>
+                        <td>9</td>
+                        <td><input type="text" id="nine"></td>
+                        </tr>
+                        <tr>
+                        <td>10</td>
+                        <td><input type="text" id="ten"></td>
+                        </tr>
+                        <tr>
+                        <td>11</td>
+                        <td><input type="text" id="eleven"></td>
+                        </tr>
+                        <tr>
+                        <td>12</td>
+                        <td><input type="text" id="twelve"></td>
+                        </tr>
+                        <td>13</td>
+                        <td><input type="text" id="thirteen"></td>
+                        </tr>
+                        <tr>
+                        <td>14</td>
+                        <td><input type="text" id="fourteen"></td>
+                        </tr>
+                        <tr>
+                        <td>15</td>
+                        <td><input type="text" id="fifthteen"></td>
+                        </tr>
+                        <tr>
+                        <td>16</td>
+                        <td><input type="text" id="sixteen"></td>
+                        </tr>
+                        <tr>
+                        <td>17</td>
+                        <td><input type="text" id="seventeen"></td>
+                        </tr>
+                        <tr>
+                        <td>18</td>
+                        <td><input type="text" id="eighteen"></td>
+                        </tr>
+                    </table>
+                </div>    
+                <input type="submit" value="Submit" onclick="submitScore()">
+            </form>
+
+            <div class="scorehistory">
+                <h4>Score History</h4>
+                <ul id="scores-list">
+                  
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        } 
+
+        var userLoggedIn = sessionStorage.getItem("userStatus");
+        var username = sessionStorage.getItem("username");
+        
+        if (userLoggedIn == 'true') {
+            document.getElementById("scores").style.display = "block";
+            document.getElementById("insights").style.display = "block";
+            document.getElementById("profileIcon").style.display = "block";
+            document.getElementById("logout-button").style.display = "block";
+        } else {
+            document.getElementById("scores").style.display = "none";
+            document.getElementById("insights").style.display = "none";
+            document.getElementById("profileIcon").style.display = "none";
+            document.getElementById("logout-button").style.display = "none";
+        }
+
+        function logout() {
+            sessionStorage.setItem("userStatus", "false");
+            location.href = "index.html";
+        }
+
+        function submitScore() {
+            var coursename = document.getElementById('coursename').value;
+            var date = document.getElementById('date').value;
+
+            var hole1 = parseInt(document.getElementById('one').value);
+            var hole2 = parseInt(document.getElementById('two').value);
+            var hole3 = parseInt(document.getElementById('three').value);
+            var hole4 = parseInt(document.getElementById('four').value);
+            var hole5 = parseInt(document.getElementById('five').value);
+            var hole6 = parseInt(document.getElementById('six').value);
+            var hole7 = parseInt(document.getElementById('seven').value);
+            var hole8 = parseInt(document.getElementById('eight').value);
+            var hole9 = parseInt(document.getElementById('nine').value);
+            var hole10 = parseInt(document.getElementById('ten').value);
+            var hole11 = parseInt(document.getElementById('eleven').value);
+            var hole12 = parseInt(document.getElementById('twelve').value);
+            var hole13 = parseInt(document.getElementById('thirteen').value);
+            var hole14 = parseInt(document.getElementById('fourteen').value);
+            var hole15 = parseInt(document.getElementById('fifthteen').value);
+            var hole16 = parseInt(document.getElementById('sixteen').value);
+            var hole17 = parseInt(document.getElementById('seventeen').value);
+            var hole18 = parseInt(document.getElementById('eighteen').value);
+
+            const scores = [hole1, hole2, hole3, hole4, hole5, hole6, hole7, hole8, hole9, hole10, hole11, hole12, hole13, hole14, hole15, hole16, hole17, hole18];
+            
+            const sum = scores.reduce((total, amount) => total + amount);
+
+            var db = `http://localhost:3000/getcoursedata/${coursename}`;
+
+            fetch(db)
+            .then(response => {
+            return response.json();
+            })
+            .then(result => {
+                var calculatedScore = sum - result[0].par;
+                console.log(calculatedScore);
+
+                var db = `http://localhost:3000/addscore/${username}/${date}/${coursename}/${calculatedScore}`;
+
+                fetch(db)
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(result => {
+                        console.log(result);
+                        return;
+                    });
+            });
+        }
+
+        function getScores(username) {
+            const list = document.getElementById('scores-list');
+
+            var db = `http://localhost:3000/getallscores/${username}`;
+            fetch(db)
+                .then(response => {
+                return response.json();
+                })
+                .then(result => {
+
+                if(result.score != 0) {
+                    for(var i=1; i < result.length; i++){
+                        li = document.createElement('li');
+                        li.innerHTML = result[i].date + '-' + result[i].coursename + '-' + result[i].score;
+                        li.setAttribute("class", "history-list-item");
+                        //button = document.createElement("BUTTON");
+                        //button.innerHTML = "Delete";
+                        //button.setAttribute("class", "delete");
+                        //li.appendChild(button);
+                        list.insertBefore(li, list.childNodes[0]);
+                    }
+                       
+                } else {
+                    console.log('No scores on record for this date');
+                }
+                return;
+                });
+        }
+
+        getScores(username);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Tracker</title>
+    <script src="https://kit.fontawesome.com/7b0cf6131d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header id="header"><i class="fas fa-golf-ball"></i> Golf Tracker
+        </br><img src="images/Ciaran_Icon.jpg" id="profileIcon">
+        <button class="logout-button" onclick="logout()" id="logout-button">Logout</button></header>
+        <div class="navHeader">
+            <span id="navIcon" onclick="openNav()" class="fa fa-bars"></span>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="scores.html" id="scores">Scores</a>
+            <a href="insights.html" id="insights">Insights</a>
+            <a href="login.html" onclick="displayProfile()">Profile</a>
+        </div>
+
+    </div>
+    <script>
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        var userLoggedIn = sessionStorage.getItem("userStatus");
+        
+        if (userLoggedIn == 'true') {
+            document.getElementById("scores").style.display = "block";
+            document.getElementById("insights").style.display = "block";
+            document.getElementById("profileIcon").style.display = "block";
+            document.getElementById("logout-button").style.display = "block";
+        } else {
+            document.getElementById("scores").style.display = "none";
+            document.getElementById("insights").style.display = "none";
+            document.getElementById("profileIcon").style.display = "none";
+            document.getElementById("logout-button").style.display = "none";
+        }
+
+        function logout() {
+            sessionStorage.setItem("userStatus", "false");
+            console.log(userLoggedIn);
+            location.href = "index.html";
+        }
+
+    </script>
+</body>
+</html>
